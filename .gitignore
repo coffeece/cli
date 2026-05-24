@@ -1,0 +1,5 @@
+/bin/
+/dist/
+/coffeece
+*.test
+*.out
