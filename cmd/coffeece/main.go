@@ -141,46 +141,9 @@ func buildManager(stdout, stderr io.Writer) *cmd.ManagerV2 {
 	m.Register(&client.CnameRemove{})
 
 	m.RegisterTopic("certificate", "Gerencie certificados TLS da app.")
-	m.RegisterTopic("certificate-issuer", "Automatize a emissão de certificados TLS.")
 	m.Register(&client.CertificateSet{})
 	m.Register(&client.CertificateUnset{})
 	m.Register(&client.CertificateList{})
-	m.Register(&client.CertificateIssuerSet{})
-	m.Register(&client.CertificateIssuerUnset{})
-
-	m.RegisterTopic("event", "Eventos auditam ações feitas nos recursos.")
-	m.Register(&client.EventList{})
-	m.Register(&client.EventInfo{})
-	m.Register(&client.EventCancel{})
-
-	m.RegisterTopic("volume", "Volumes são armazenamento externo montado na app.")
-	m.Register(&client.VolumeCreate{})
-	m.Register(&client.VolumeUpdate{})
-	m.Register(&client.VolumeList{})
-	m.Register(&client.VolumeDelete{})
-	m.Register(&client.VolumeInfo{})
-	m.Register(&client.VolumeBind{})
-	m.Register(&client.VolumeUnbind{})
-	m.RegisterTopic("volume-plan", "Planos de volume.")
-	m.Register(&client.VolumePlansList{})
-
-	m.RegisterTopic("app-router", "Routers que direcionam tráfego para a app.")
-	m.Register(&client.AppRoutersList{})
-	m.Register(&client.AppRoutersAdd{})
-	m.Register(&client.AppRoutersRemove{})
-	m.Register(&client.AppRoutersUpdate{})
-
-	m.RegisterTopic("autoscale", "Autoscaling das units da app.")
-	m.RegisterTopic("unit-autoscale", "Autoscaling das units da app.")
-	m.RegisterDeprecated(&client.AutoScaleSet{}, "unit-autoscale-set")
-	m.RegisterDeprecated(&client.AutoScaleUnset{}, "unit-autoscale-unset")
-	m.RegisterDeprecated(&client.AutoScaleSwap{}, "unit-autoscale-swap")
-
-	m.RegisterTopic("metadata", "Labels e annotations de apps e jobs.")
-	m.RegisterTopic("app-metadata", "Labels e annotations de apps.")
-	m.RegisterDeprecated(&client.MetadataSet{}, "app-metadata-set")
-	m.RegisterDeprecated(&client.MetadataUnset{}, "app-metadata-unset")
-	m.RegisterDeprecated(&client.MetadataGet{}, "app-metadata-get")
 
 	m.RegisterTopic("plugin", "Plugins estendem a funcionalidade do CLI.")
 	m.Register(&client.PluginInstall{})
@@ -188,12 +151,7 @@ func buildManager(stdout, stderr io.Writer) *cmd.ManagerV2 {
 	m.Register(&client.PluginList{})
 	m.Register(&client.PluginBundle{})
 
-	m.RegisterTopic("tag", "Tags organizam apps e instâncias de serviço.")
-	m.Register(&client.TagList{})
-
 	m.Register(&client.ChangePassword{})
-	m.Register(&client.ShowAPIToken{})
-	m.Register(&client.RegenerateAPIToken{})
 	m.Register(client.UserInfo{})
 
 	// Shorthands — short names for frequent commands.
