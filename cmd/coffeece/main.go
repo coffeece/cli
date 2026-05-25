@@ -148,17 +148,6 @@ func buildManager(stdout, stderr io.Writer) *cmd.ManagerV2 {
 	m.Register(&client.CertificateIssuerSet{})
 	m.Register(&client.CertificateIssuerUnset{})
 
-	m.RegisterTopic("pool", "Pools são regiões onde a app pode rodar.")
-	m.Register(&client.PoolList{})
-	m.Register(&client.PoolInfo{})
-
-	m.RegisterTopic("team", "Gerencie times.")
-	m.Register(&client.TeamCreate{})
-	m.Register(&client.TeamUpdate{})
-	m.Register(&client.TeamRemove{})
-	m.Register(&client.TeamList{})
-	m.Register(&client.TeamInfo{})
-
 	m.RegisterTopic("event", "Eventos auditam ações feitas nos recursos.")
 	m.Register(&client.EventList{})
 	m.Register(&client.EventInfo{})
@@ -192,19 +181,6 @@ func buildManager(stdout, stderr io.Writer) *cmd.ManagerV2 {
 	m.RegisterDeprecated(&client.MetadataSet{}, "app-metadata-set")
 	m.RegisterDeprecated(&client.MetadataUnset{}, "app-metadata-unset")
 	m.RegisterDeprecated(&client.MetadataGet{}, "app-metadata-get")
-
-	m.RegisterTopic("token", "Tokens de time para autenticar automações.")
-	m.Register(&client.TokenCreateCmd{})
-	m.Register(&client.TokenUpdateCmd{})
-	m.Register(&client.TokenListCmd{})
-	m.Register(&client.TokenDeleteCmd{})
-	m.Register(&client.TokenInfoCmd{})
-
-	m.RegisterTopic("event-webhook", "Webhooks integram eventos da Coffeece com sistemas externos.")
-	m.Register(&client.WebhookList{})
-	m.Register(&client.WebhookCreate{})
-	m.Register(&client.WebhookUpdate{})
-	m.Register(&client.WebhookDelete{})
 
 	m.RegisterTopic("plugin", "Plugins estendem a funcionalidade do CLI.")
 	m.Register(&client.PluginInstall{})
